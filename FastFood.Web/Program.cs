@@ -12,12 +12,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
      option.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContextConnection")));
 
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option => {
     option.Password.RequiredLength = 8;
     option.Password.RequireDigit = false;
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-builder.Services.AddScoped<IDbInitializer,DbInitializer>();  
+
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.AddRazorPages();

@@ -17,7 +17,7 @@ namespace FastFood.Web.Areas.Identity.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -40,8 +40,8 @@ namespace FastFood.Web.Areas.Identity.Controllers
                 var result = await _userManager.CreateAsync(user, registermodel.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    await _signInManager.SignInAsync(user, false);  
+                    return RedirectToAction("Login", "Account", new {Area="Identity"});
                 }
                 else
                 {
@@ -53,6 +53,7 @@ namespace FastFood.Web.Areas.Identity.Controllers
             }
             return View(registermodel);
         }
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
@@ -60,7 +61,7 @@ namespace FastFood.Web.Areas.Identity.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginmodel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(loginmodel);
             }
@@ -69,7 +70,7 @@ namespace FastFood.Web.Areas.Identity.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Categories", new {Area="Admin"});
             }
             else
             {
