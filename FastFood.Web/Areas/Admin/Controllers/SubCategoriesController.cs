@@ -66,7 +66,6 @@ namespace FastFood.Web.Areas.Admin.Controllers
                 model.CategoryId = vm.CategoryId;
                 _context.SubCategories.Update(model);
                 _context.SaveChanges();
-
                 return RedirectToAction("Index");
             }
             return View(vm);

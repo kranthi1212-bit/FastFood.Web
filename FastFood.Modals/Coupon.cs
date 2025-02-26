@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,9 @@ namespace FastFood.Modals
     }
     public enum CouponType
     {
+        [Display(Name = "Percent")]
         Percent=0,
+        [Display(Name = "Currency")]
         Currency=1
     }
 }

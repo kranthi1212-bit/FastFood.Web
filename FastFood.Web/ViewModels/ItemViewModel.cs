@@ -11,5 +11,7 @@ namespace FastFood.Web.ViewModels
         public double Price { get; set; }
         public int CategoryId { get; set; }
         public int SubCategoryId { get; set; }
+        public string CategoryTitle { get; set; }    
+        public string SubCategoryTitle { get; set; }
     }
 }
