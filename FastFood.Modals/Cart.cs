@@ -15,7 +15,7 @@ namespace FastFood.Modals
         public Item Item { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-        [Required,MinLength(1)] 
-        public int Count { get; set; }
+        [Required]
+        public int Count { get; set; } 
     }
 }

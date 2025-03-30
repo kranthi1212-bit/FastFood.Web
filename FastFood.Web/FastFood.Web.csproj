@@ -24,7 +24,6 @@
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Areas\Customer\Views\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Views\Account\" />
     <Folder Include="wwwroot\Images\Items\" />
   </ItemGroup>

@@ -30,13 +30,12 @@ namespace FastFood.Web.Areas.Identity.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = registermodel.Email,
-                    Email = registermodel.Email
+                    Email = registermodel.Email,
+                    Name=registermodel.Name,
+                    City = registermodel.City,
+                    Address = registermodel.Address,
+                    PostalCode=registermodel.PostalCods
                 };
-                //IdentityUser user = new IdentityUser
-                //{
-                //    Email = registermodel.Email,
-                //    UserName = registermodel.Email
-                //};
                 var result = await _userManager.CreateAsync(user, registermodel.Password);
                 if (result.Succeeded)
                 {
@@ -82,7 +81,7 @@ namespace FastFood.Web.Areas.Identity.Controllers
         public async Task<ActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Categories", new { Area = "Admin" });
         }
     }
 }

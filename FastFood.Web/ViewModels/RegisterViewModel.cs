@@ -13,5 +13,10 @@ namespace FastFood.Web.ViewModels
         [Compare("Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+        [Required]
+        public string Name {  get; set; }   
+        public string City { get; set; }   
+        public string Address { get; set; }
+        public string PostalCods { get; set; }
     }
 }

@@ -49,21 +49,21 @@ namespace FastFood.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ItemViewModel vm)
         {
-            Item model = new Item();
-            if (vm.ImageUrl != null && vm.ImageUrl.Length > 0)
+            Item item = new Item();
+            if (vm.Imageurl != null && vm.Imageurl.Length > 0)
             {
                 var uploadDir = @"Images/Items";
-                var filename = Guid.NewGuid().ToString() + "-" + vm.ImageUrl.FileName;
+                var filename = Guid.NewGuid().ToString() + "-" + vm.Imageurl.FileName;
                 var filepath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDir, filename);
-                await vm.ImageUrl.CopyToAsync(new FileStream(filepath, FileMode.Create));
-                model.Image = "/" + uploadDir + "/" + filename;
+                await vm.Imageurl.CopyToAsync(new FileStream(filepath, FileMode.Create));
+                item.Image = "/" + uploadDir + "/" + filename;
             }
-            model.Price = vm.Price;
-            model.Title = vm.Title;
-            model.Description = vm.Description;
-            model.CategoryId = vm.CategoryId;
-            model.SubCategoryId = vm.SubCategoryId;
-            _context.Items.Add(model);
+            item.Price = vm.Price;
+            item.Title = vm.Title;
+            item.Description = vm.Description;
+            item.CategoryId = vm.CategoryId;
+            item.SubCategoryId = vm.SubCategoryId;
+            _context.Items.Add(item);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -86,22 +86,22 @@ namespace FastFood.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ItemViewModel vm)
         {
-            Item model = new Item();
-            if (vm.ImageUrl != null && vm.ImageUrl.Length > 0)
+            Item model1 = new Item();
+            if (vm.Imageurl != null && vm.Imageurl.Length > 0)
             {
                 var uploadDir = @"Images/Items";
-                var filename = Guid.NewGuid().ToString() + "-" + vm.ImageUrl.FileName;
+                var filename = Guid.NewGuid().ToString() + "-" + vm.Imageurl.FileName;
                 var filepath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDir, filename);
-                await vm.ImageUrl.CopyToAsync(new FileStream(filepath, FileMode.Create));
-                model.Image = "/" + uploadDir + "/" + filename;
+                await vm.Imageurl.CopyToAsync(new FileStream(filepath, FileMode.Create));
+                model1.Image = "/" + uploadDir + "/" + filename;
             }
-            model.Price = vm.Price;
-            model.Title = vm.Title;
-            model.Description = vm.Description;
-            model.CategoryId = vm.CategoryId;
-            model.SubCategoryId = vm.SubCategoryId;
+            model1.Price = vm.Price;
+            model1.Title = vm.Title;
+            model1.Description = vm.Description;
+            model1.CategoryId = vm.CategoryId;
+            model1.SubCategoryId = vm.SubCategoryId;
 
-            _context.Items.Update(model);
+            _context.Items.Update(model1);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
