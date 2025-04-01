@@ -20,10 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Customer\Controllers\" />
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Customer\Models\" />
-    <Folder Include="Areas\Customer\Views\" />
     <Folder Include="Views\Account\" />
     <Folder Include="wwwroot\Images\Items\" />
   </ItemGroup>
